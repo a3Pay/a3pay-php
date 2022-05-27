@@ -10,7 +10,7 @@ PHP library for a3Pay
 ## Installation
 To install with composer run the following command
 
-    composer require a3Pay/a3pay-php
+    composer require a3pay/php
 
 and then include the following line in your project where you want to use the wrapper's classes.
 
