@@ -22,44 +22,48 @@ require_once('your_project_path_to/vendor/autoload.php');
 ## Usage
 ```php
 
-require_once '../vendor/autoload.php';
+//Include Composer autoload file
+require_once 'vendor/autoload.php';
 
-//Payment Collection
-$payments = new a3\payments('w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0');
+$token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0';
+//To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
 
-//a3 Apps
-$account = new a3\account('w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0');
+$btc_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; //For Bitcoin
+$usdt_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; // For Tether USDT
+$eth_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; // For Ethereum
+//To know more about api_keys and how to get yours follow here (https://a3pay.co/docs/#api_key)
 
-//Wallet
-$btc = new a3\wallet('praoubf8d2e1584059489f8ffa3663b3223df2');
-$usdt = new a3\wallet('praoubf8d2e1584059489f8ffa3663b3223df2');
-$eth = new a3\wallet('praoubf8d2e1584059489f8ffa3663b3223df2');
+//Initiate the Payment Collection API Class
+$payments = new a3\payments($token);
 
-//Marketa
+//Initiate the a3 Apps API Class
+$account = new a3\account($token);
+
+//Initiate the Wallet API Class
+$btc = new a3\wallet($btc_api_key); //Call Wallet Functions for Bitcoin
+$usdt = new a3\wallet($usdt_api_key); //Call Wallet Functions for Tether USDT
+$eth = new a3\wallet($eth_api_key); //Call Wallet Functions for Ethereum
+
+//Initiate the a3Marketa API Class
 $marketa = new a3\marketa;
 
 
-//Create Transaction
+//Create New Transaction
 $resp = $payments->create_transaction($amount, $label, $currency, $coin, $success_callback, $error_callback);
 
-
-//Get account information Transaction
+//Get Account Information
 $resp = $account->get_account_info();
-print_r($resp);
 
 //Get new bitcoin address
 $label = 'default';
 $resp = $btc->get_new_address($label);
-print_r($resp);
 //Get new tether USDT address
-//$resp = $usdt->get_new_address($label);
+$resp = $usdt->get_new_address($label);
 //Get new tether Ethereum address
-//$resp = $eth->get_new_address($label);
-
+$resp = $eth->get_new_address($label);
 
 //Get live exchange rates
 $resp = $marketa->live_data();
-print_r($resp);
 
 
 ```
