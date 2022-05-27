@@ -3,6 +3,7 @@ namespace a3;
 
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ServerException;
 
 class GuzzleHttpHandler
 {
@@ -37,6 +38,14 @@ class GuzzleHttpHandler
             );
         }
         catch(ConnectException $e)
+        {
+            $response = $e->getMessage();
+            return array(
+                'code' => 500,
+                'body' => ['message' => $response]
+            );
+        }
+        catch(ServerException $e)
         {
             $response = $e->getMessage();
             return array(
