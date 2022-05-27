@@ -11,12 +11,6 @@ To install with composer run the following command
 
     composer require a3pay/php
 
-and then include the following line in your project where you want to use the wrapper's classes.
-
-```php
-require_once('your_project_path_to/vendor/autoload.php');
-``` 
-
 
 ## Usage
 ```php
