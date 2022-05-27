@@ -1,0 +1,24 @@
+{
+    "name": "a3pay/php",
+    "description": "A PHP Wrapper for a3Pay API",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "a3\\": "dist/"
+        }
+    },
+    "require": {
+        "php": "^7.3|^8.0",
+        "psr/log": "^1.0",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Snipnet Technologies",
+            "email": "contact@snipnetworks.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
