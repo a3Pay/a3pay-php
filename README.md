@@ -29,8 +29,8 @@ $token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0';
 //To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
 
 $btc_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; //For Bitcoin
-$usdt_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; // For Tether USDT
-$eth_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; // For Ethereum
+$usdt_api_key = '9f8ffbf8d2e1584059489f8ffa3663b3223df2'; // For Tether USDT
+$eth_api_key = '663b3bf8oubf8d4059489f8ffa3663b3205948'; // For Ethereum
 //To know more about api_keys and how to get yours follow here (https://a3pay.co/docs/#api_key)
 
 //Initiate the Payment Collection API Class
