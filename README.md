@@ -37,7 +37,7 @@ $eth_api_key = '663b3bf8oubf8d4059489f8ffa3663b3205948'; // For Ethereum
 $payments = new a3\payments($token);
 
 //Initiate the a3 Apps API Class
-$account = new a3\account($token);
+$apps = new a3\apps($token);
 
 //Initiate the Wallet API Class
 $btc = new a3\wallet($btc_api_key); //Call Wallet Functions for Bitcoin
