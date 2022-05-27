@@ -4,7 +4,6 @@ PHP library for a3Pay
 
 ## Requirements
  * PHP ^7.3
- * Composer - [getcomposer.org](https://getcomposer.org/)
 
 
 ## Installation
