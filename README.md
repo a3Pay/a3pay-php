@@ -15,49 +15,61 @@ To install with composer run the following command
 ## Usage
 ```php
 
-//Include Composer autoload file
+//Autoload classes using composer
 require_once 'vendor/autoload.php';
+//OR
+//Include the classes directly from path
+require_once 'vendor/a3pay/php/dist/payments.php';
+require_once 'vendor/a3pay/php/dist/marketa.php';
+require_once 'vendor/a3pay/php/dist/apps.php';
+require_once 'vendor/a3pay/php/dist/wallet.php';
 
-$token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0';
-//To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
 
-$btc_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; //For Bitcoin
-$usdt_api_key = '9f8ffbf8d2e1584059489f8ffa3663b3223df2'; // For Tether USDT
-$eth_api_key = '663b3bf8oubf8d4059489f8ffa3663b3205948'; // For Ethereum
-//To know more about api_keys and how to get yours follow here (https://a3pay.co/docs/#api_key)
-
-//Initiate the Payment Collection API Class
+//Payment Collection
+//Ignite the Payment Collection Class Using Your a3Pay Account Taken
+$token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0'; //To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
 $payments = new a3\payments($token);
 
-//Initiate the a3 Apps API Class
-$apps = new a3\apps($token);
+//Using the create_transaction function
+$amount = 1000;
+$label = 'frgtyuy4';
+$currency = 'USD';
+$coin = 'BTC,USDT';
+$success_url = 'https://my_domain.com/success_callback?id=456ytgre56';
+$error_url = 'https://my_domain.com/error_callback?id=456ytgre56';
+$resp = $payments->create_transaction($amount, $label, $currency, $coin, $success_url, $error_url);
+//Using the create_transaction function without callback urls
+$resp = $payments->create_transaction($amount, $label, $currency, $coin, null, null);
 
-//Initiate the Wallet API Class
-$btc = new a3\wallet($btc_api_key); //Call Wallet Functions for Bitcoin
-$usdt = new a3\wallet($usdt_api_key); //Call Wallet Functions for Tether USDT
-$eth = new a3\wallet($eth_api_key); //Call Wallet Functions for Ethereum
 
-//Initiate the a3Marketa API Class
-$marketa = new a3\marketa;
+//Wallet
+//Ignite the wallet Class Using Your wallet api_key
+$btc_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; //For Bitcoin
+$usdt_api_key = '9f8ffbf8d2e1584059489f8ffa3663b3223df2'; // For Tether USDT
+$eth_api_key = 'praoubf8d2e1584059489f8ffa3663b3223df2'; // For Ethereum
+//To know more about wallet api keys and how to get yours follow here (https://a3pay.co/docs/#api_key)
+$eth = new a3\wallet($eth_api_key);
 
-
-//Create New Transaction
-$resp = $payments->create_transaction($amount, $label, $currency, $coin, $success_callback, $error_callback);
-
-//Get Account Information
-$resp = $account->get_account_info();
-
-//Get new bitcoin address
-$label = 'default';
-$resp = $btc->get_new_address($label);
-//Get new tether USDT address
-$resp = $usdt->get_new_address($label);
-//Get new tether Ethereum address
+//Using the get_new_address function
+$label = 'wsedrftgyh';
 $resp = $eth->get_new_address($label);
 
-//Get live exchange rates
+
+//a3Marketa
+//Ignite the a3marketa Class
+$marketa = new a3\marketa();
+
+//Using the live_data function
 $resp = $marketa->live_data();
 
+
+//a3Apps
+//Ignite the a3apps Class Using Your a3Pay Account Taken
+$token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0'; //To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
+$apps = new a3\apps($token);
+
+//Using the get_account_info function
+$resp = $apps->get_account_info();
 
 ```
 
