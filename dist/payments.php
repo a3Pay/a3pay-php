@@ -17,7 +17,14 @@ class payments
 
     public function create_transaction($amt, $lb, $cur, $coin, $su_call, $err_call)
     {
-        $request = $this->endpoint . 'create_transaction/' . $this->token . '/' . $amt . '/' . $lb . '/' . $cur . '/' . $coin . '/' . $su_call . '/' . $err_call;
+        if ($su_call)
+        {
+        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&amount=' . $amt . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin . '&success_callback=' . $su_call . '&error_callback=' . $err_call;
+        }
+        else
+        {
+        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&amount=' . $amt . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin;
+        }
         $resp = $this
             ->httpClient
             ->fetch($request);
@@ -47,9 +54,9 @@ class payments
         }
     }
 
-    public function get_tx_list($txid)
+    public function get_tx_list($limit)
     {
-        $request = $this->endpoint . 'get_tx_list/' . $this->token;
+        $request = $this->endpoint . 'get_tx_list/' . $this->token . '/' . $limit;
         $resp = $this
             ->httpClient
             ->fetch($request);

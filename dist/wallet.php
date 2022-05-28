@@ -143,7 +143,14 @@ class wallet
 
     public function send_to_address($address, $amount, $from)
     {
+        if ($from)
+        {
         $request = 'send_to_address/' . $this->apikey . '/' . $address . '/' . $amount . '/' . $from;
+        }
+        else
+        {
+        $request = 'send_to_address/' . $this->apikey . '/' . $address . '/' . $amount;
+        }
         $resp = $this
             ->httpClient
             ->fetch($request);
