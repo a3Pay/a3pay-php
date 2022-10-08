@@ -141,6 +141,22 @@ class wallet
         }
     }
 
+    public function get_block_transaction($txid)
+    {
+        $request = 'get_block_transaction/' . $this->apikey . '/' . $txid;
+        $resp = $this
+            ->httpClient
+            ->fetch($request);
+        if ($resp['code'] == 200)
+        {
+            return $resp['body']['data']['tx'];
+        }
+        else
+        {
+            return 'Failed: ' . $resp['body']['message'];
+        }
+    }
+
     public function send_to_address($address, $amount, $from)
     {
         if ($from)
