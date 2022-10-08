@@ -51,6 +51,11 @@ $txid = '0xd89a37efdbe6f706224750c7cd33d8da0d5aa55b7f214465bf178b60f7699933';
 $resp = $eth->get_transaction($txid);
 
 
+//Using the get_block_transaction function
+$txid = '0xd89a37efdbe6f706224750c7cd33d8da0d5aa55b7f214465bf178b60f7699933';
+$resp = $eth->get_block_transaction($txid);
+
+
 //Using the send_to_address function
 $address = '0xd89a37efdbe6f706224750c7cd33d8da';
 $amount = '0.2';
