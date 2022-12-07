@@ -27,19 +27,21 @@ require_once 'vendor/a3pay/php/dist/wallet.php';
 
 //Payment Collection
 //Ignite the Payment Collection Class Using Your a3Pay Account Taken
+$mode = 'test'; //'test' or 'live'
 $token = 'w6gfpqde8a3u5lauu7r7xkfqhkinslvxrsybr0'; //To know more about tokens and how to get yours follow here (https://a3pay.co/docs/#access_token)
-$payments = new a3\payments($token);
+$payments = new a3\payments($token, $mode);
 
 //Using the create_transaction function
+$category = 'checkout'; // 'checkout' or 'donation'
 $amount = 1000;
 $label = 'frgtyuy4';
 $currency = 'USD';
 $coin = 'BTC,USDT';
 $success_url = 'https://my_domain.com/success_callback?id=456ytgre56';
 $error_url = 'https://my_domain.com/error_callback?id=456ytgre56';
-$resp = $payments->create_transaction($amount, $label, $currency, $coin, $success_url, $error_url);
+$resp = $payments->create_transaction($category, $amount, $label, $currency, $coin, $success_url, $error_url);
 //Using the create_transaction function without callback urls
-$resp = $payments->create_transaction($amount, $label, $currency, $coin, null, null);
+$resp = $payments->create_transaction($category, $amount, $label, $currency, $coin, null, null);
 
 
 //Wallet
