@@ -21,11 +21,11 @@ class payments
     {
         if ($su_call)
         {
-        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&amount=' . $amt . '&mode=' . $this->mode . '&category=' . $cat . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin . '&success_callback=' . $su_call . '&error_callback=' . $err_call;
+        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&mode=' . $this->mode . '&category=' . $cat . '&amount=' . $amt . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin . '&success_callback=' . $su_call . '&error_callback=' . $err_call;
         }
         else
         {
-        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&mode=' . $this->mode . '&amount=' . $amt . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin;
+        $request = $this->endpoint . 'create_transaction/?token=' . $this->token . '&mode=' . $this->mode . '&category=' . $cat . '&amount=' . $amt . '&label=' . $lb . '&currency=' . $cur . '&coin=' . $coin;
         }
         $resp = $this
             ->httpClient
